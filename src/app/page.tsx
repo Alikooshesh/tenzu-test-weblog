@@ -1,5 +1,4 @@
 import PostBoxHomePage from "@/components/homePage/postBox";
-import { interpolateColor } from "@/utils/colorGen";
 
 async function getPosts() {
   const res = await fetch (`${process.env.NEXT_PUBLIC_BASE_API_URL}/posts`);
