@@ -5,28 +5,37 @@ import { timestampToGre } from "@/utils/dateAndTimeHandlers";
 import { createRandomTimeStamp } from "@/utils/fakeData";
 
 export default async function HomePage() {
-  let postList:Ipost[] = []
+  let postList: Ipost[] = []
 
-  try{
+  try {
     postList = await getPosts()
-  }catch(err){
-    alert(err)
+  } catch (err) {
+    return (
+      <div className="w-full mt-20 justify-center">
+        <p className="text-[3rem] font-black text-red-600 text-center">
+          there is a problem
+          <br/>
+          try later
+        </p>
+      </div>
+    )
   }
+
 
   return (
     <>
-    <div className="w-full flex flex-col gap-[3rem]">
-    {postList.map((item,index:number) => (
-      <PostBoxHomePage 
-        key={item.id}
-        id={item.id}
-        title={item.title}
-        body={item.body}
-        index={index}
-        publishDate={timestampToGre(createRandomTimeStamp())}
-      />
-    ))}
-    </div>
+      <div className="w-full flex flex-col gap-[3rem]">
+        {postList.map((item, index: number) => (
+          <PostBoxHomePage
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            body={item.body}
+            index={index}
+            publishDate={timestampToGre(createRandomTimeStamp())}
+          />
+        ))}
+      </div>
     </>
   );
 }
