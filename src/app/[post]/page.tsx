@@ -21,7 +21,7 @@ export default async function PostPage({ params }: { params: { post: string } })
     return (
         <>
             <article className="flex flex-col gap-[4px]">
-                <h1 className="inline-block text-transparent bg-clip-text font-black text-[1.75rem] text-black dark:text-white">
+                <h1 className="font-black text-[1.75rem] text-black dark:text-white">
                     {postData.title}
                 </h1>
                 <span className="text-[13px] text-gray-700 dark:text-gray-300">
