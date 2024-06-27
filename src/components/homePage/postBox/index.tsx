@@ -2,16 +2,17 @@ import { hslColorGen } from "@/utils/colorGen"
 import Link from "next/link"
 
 interface Iprops {
+    id : number,
     title: string,
     publishDate: string,
     body: string,
     index: number
 }
 
-const PostBoxHomePage = ({ title, publishDate, body, index }: Iprops) => {
+const PostBoxHomePage = ({ id,title, publishDate, body, index }: Iprops) => {
     return (
         <>
-            <Link href={`/${title.split(" ").join("-")}`}>
+            <Link href={`/${[...title.split(" "),id].join("-")}`}>
                 <div className="flex flex-col gap-[4px]">
                     <h1 className="inline-block text-transparent bg-clip-text font-black text-[1.75rem]" style={{ backgroundColor: hslColorGen(331,40,64,index) }}>
                         {title}
