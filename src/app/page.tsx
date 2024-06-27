@@ -2,7 +2,6 @@ import PostBoxHomePage from "@/components/homePage/postBox";
 import { Ipost } from "@/interface/postInterface";
 import { getPosts } from "@/services/homePage/homePageServices";
 import { timestampToGre } from "@/utils/dateAndTimeHandlers";
-import { createRandomTimeStamp } from "@/utils/fakeData";
 
 export default async function HomePage() {
   let postList: Ipost[] = []
@@ -32,7 +31,7 @@ export default async function HomePage() {
             title={item.title}
             body={item.body}
             index={index}
-            publishDate={timestampToGre(createRandomTimeStamp())}
+            publishDate={timestampToGre(item.updated_at)}
           />
         ))}
       </div>
