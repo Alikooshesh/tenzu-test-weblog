@@ -1,22 +1,19 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const init = {
-    rootSettings : {
-        darkMode : false
-    }
+  darkMode: false
 }
 
 const rootSettings = createSlice({
-    name: 'rootSettingsReducer',
-    initialState: init,
-    reducers: {
-        changeTheme: (state, action) => {
-            const currentMode = state.rootSettings.darkMode
-            state.rootSettings.darkMode = !currentMode
-        }
-
+  name: 'rootSettingsReducer',
+  initialState: init,
+  reducers: {
+    changeTheme: (state,actions) => {
+      const currentMode = state.darkMode
+      state.darkMode = !currentMode
     }
+  }
 })
 
-export const {changeTheme} = rootSettings.actions
+export const { changeTheme } = rootSettings.actions
 export default rootSettings.reducer

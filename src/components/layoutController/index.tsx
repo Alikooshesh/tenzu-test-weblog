@@ -16,12 +16,12 @@ const LayoutController = ({ children }: Iprops) => {
     const pathname = usePathname()
     const dispatch = useDispatch()
 
-    const darkMode: any = useSelector((state:IRootState) => state.siteSettings.rootSettings.darkMode)
+    const darkMode = useSelector((state:IRootState) => state.siteSettings.darkMode)
 
     return (
         <div className={`${darkMode ? 'dark' : ''}`}>
             <div className="root">
-                <div className={`container ${darkMode ? 'dark' : ''}`}>
+                <div className="container">
                 <header className="w-full mb-14 flex flex-wrap items-center justify-between gap-[32px]">
                     <a href="/">
                         <span className={`text-[1.5rem] font-black ${pathname === "/" ? 'text-black dark:text-white' : 'bg-gradient-to-r from-blog-pink-light to-blog-purple-light inline-block text-transparent bg-clip-text'}`}>
@@ -61,6 +61,7 @@ const LayoutController = ({ children }: Iprops) => {
                     </div>
                 </header>
                 {children}
+                {darkMode ? <p className="absolute opacity-0">overreacted</p> : <></>}
             </div>
             </div>
         </div>

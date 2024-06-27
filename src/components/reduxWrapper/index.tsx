@@ -11,7 +11,7 @@ interface Iprops {
 
 const ReduxWrapper = ({children}:Iprops)=>{
     return(
-        <Provider store={store ?? null}>
+        <Provider store={store}>
           <PersistGate persistor={persistore}>
               {()=>(
                 <>

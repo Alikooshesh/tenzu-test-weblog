@@ -1,8 +1,17 @@
-import {createStore} from "@reduxjs/toolkit";
-import persistedReducers from "./rootReducers";
-import {persistStore} from "redux-persist";
+import { configureStore } from '@reduxjs/toolkit'
+import { persistStore } from 'redux-persist'
+import persistedReducers from './rootReducers'
 
-export const store = createStore(persistedReducers)
+export const store = configureStore({
+  reducer: persistedReducers,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['persist/PERSIST'],
+      },
+    }),
+})
+
 export const persistore = persistStore(store)
 
 export type IRootState = ReturnType<typeof store.getState>
