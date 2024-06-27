@@ -20,6 +20,7 @@ export default async function HomePage() {
     <div className="w-full flex flex-col gap-[3rem]">
     {postList.map((item:any,index:number) => (
       <PostBoxHomePage 
+        key={item.id}
         title={item.title}
         body={item.body}
         index={index}
