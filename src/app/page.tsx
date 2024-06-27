@@ -1,17 +1,11 @@
 import PostBoxHomePage from "@/components/homePage/postBox";
-
-async function getPosts() {
-  const res = await fetch (`${process.env.NEXT_PUBLIC_BASE_API_URL}/posts`);
-
-  if (!res.ok) {
-    throw new Error(res.statusText)
-  }
-  
-  return res.json();
-}
+import { Ipost } from "@/interface/postInterface";
+import { getPosts } from "@/services/homePage/homePageServices";
+import { timestampToGre } from "@/utils/dateAndTimeHandlers";
+import { createRandomTimeStamp } from "@/utils/fakeData";
 
 export default async function HomePage() {
-  let postList = []
+  let postList:Ipost[] = []
 
   try{
     postList = await getPosts()
@@ -22,14 +16,14 @@ export default async function HomePage() {
   return (
     <>
     <div className="w-full flex flex-col gap-[3rem]">
-    {postList.map((item:any,index:number) => (
+    {postList.map((item,index:number) => (
       <PostBoxHomePage 
         key={item.id}
         id={item.id}
         title={item.title}
         body={item.body}
         index={index}
-        publishDate={item.title}
+        publishDate={timestampToGre(createRandomTimeStamp())}
       />
     ))}
     </div>

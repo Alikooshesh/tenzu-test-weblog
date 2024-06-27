@@ -1,3 +1,7 @@
+import { Ipost } from "@/interface/postInterface";
+import { timestampToGre } from "@/utils/dateAndTimeHandlers";
+import { createRandomTimeStamp } from "@/utils/fakeData";
+
 async function getPostData(postId : number) {
     const res = await fetch (`${process.env.NEXT_PUBLIC_BASE_API_URL}/posts/${postId}`);
   
@@ -12,7 +16,7 @@ export default async function PostPage({params} : { params: { post: string } }) 
 
     const postId = +(params.post.split("-").at(-1) ?? 0)
 
-    const postData = await getPostData(postId)
+    const postData:Ipost = await getPostData(postId)
 
     return(
         <>
@@ -21,7 +25,7 @@ export default async function PostPage({params} : { params: { post: string } }) 
                         {postData.title}
                     </h1>
                     <span className="text-[13px] text-gray-700 dark:text-gray-300">
-                        {/* {publishDate} */}
+                        {timestampToGre(createRandomTimeStamp())}
                     </span>
                     <p className="mt-1 text-black dark:text-white">
                         {postData.body}
