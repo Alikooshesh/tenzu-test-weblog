@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.scss";
 import LayoutController from "@/components/layoutController";
+import ReduxWrapper from "@/components/reduxWrapper";
 
 const montserral = Montserrat({ subsets: ["latin"] });
 
@@ -18,11 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserral.className}>
-        <LayoutController>
-          <>
-          {children}
-          </>
-        </LayoutController>
+        <ReduxWrapper>
+          <LayoutController>
+            <>
+              {children}
+            </>
+          </LayoutController>
+        </ReduxWrapper>
       </body>
     </html>
   );

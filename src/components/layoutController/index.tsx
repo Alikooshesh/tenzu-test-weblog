@@ -3,6 +3,9 @@
 import { usePathname } from "next/navigation"
 import { ReactElement, useState } from "react"
 import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
+import { changeTheme } from "@/redux/siteSetting/slice";
+import { IRootState } from "@/redux/store";
 
 interface Iprops {
     children?: ReactElement
@@ -11,17 +14,14 @@ interface Iprops {
 const LayoutController = ({ children }: Iprops) => {
 
     const pathname = usePathname()
+    const dispatch = useDispatch()
 
-    const [darkMode, setDarkMode] = useState(false)
-
-    const handleChangeTheme = () => {
-        setDarkMode(prev => !prev)
-    }
+    const darkMode: any = useSelector((state:IRootState) => state.siteSettings.rootSettings.darkMode)
 
     return (
         <div className={`${darkMode ? 'dark' : ''}`}>
             <div className="root">
-            <div className={`container ${darkMode ? 'dark' : ''}`}>
+                <div className={`container ${darkMode ? 'dark' : ''}`}>
                 <header className="w-full mb-14 flex flex-wrap items-center justify-between gap-[32px]">
                     <a href="/">
                         <span className={`text-[1.5rem] font-black ${pathname === "/" ? 'text-black dark:text-white' : 'bg-gradient-to-r from-blog-pink-light to-blog-purple-light inline-block text-transparent bg-clip-text'}`}>
@@ -45,7 +45,7 @@ const LayoutController = ({ children }: Iprops) => {
                         </div>
 
                         <div 
-                            onClick={handleChangeTheme} 
+                            onClick={()=>dispatch(changeTheme({}))} 
                             className="w-[32px] h-[32px] rounded-full border border-black dark:border-white flex items-center justify-center cursor-pointer"
                         >
                             {!darkMode ?
@@ -62,7 +62,7 @@ const LayoutController = ({ children }: Iprops) => {
                 </header>
                 {children}
             </div>
-        </div>
+            </div>
         </div>
     )
 }
