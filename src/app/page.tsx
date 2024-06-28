@@ -13,7 +13,8 @@ export default async function HomePage() {
       <div className="w-full mt-20 justify-center">
         <p className="text-[3rem] font-black text-red-600 text-center">
           there is a problem
-          <br/>
+        </p>
+        <p>
           try later
         </p>
       </div>
