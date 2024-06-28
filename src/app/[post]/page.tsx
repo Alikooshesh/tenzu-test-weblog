@@ -1,6 +1,7 @@
 import { Ipost } from "@/interface/postInterface";
 import { getPostData } from "@/services/postPage/postPageServices";
 import { timestampToGre } from "@/utils/dateAndTimeHandlers";
+import Head from "next/head";
 
 export default async function PostPage({ params }: { params: { post: string } }) {
 
@@ -10,6 +11,11 @@ export default async function PostPage({ params }: { params: { post: string } })
 
     return (
         <>
+            <Head>
+                <title>
+                    {postData.title}
+                </title>
+            </Head>
             <article className="flex flex-col gap-[4px]">
                 <h1 className="font-black text-[1.75rem] text-black dark:text-white">
                     {postData.title}

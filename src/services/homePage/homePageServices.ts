@@ -2,7 +2,7 @@ import { Ipost } from "@/interface/postInterface";
 import { createRandomTimeStamp } from "@/utils/fakeData";
 
 export async function getPosts() {
-    const res = await fetch (`${process.env.NEXT_PUBLIC_BASE_API_URL}/posts`);
+    const res = await fetch (`${process.env.NEXT_PUBLIC_BASE_API_URL}/posts`,{next : {revalidate : 1000 * 60 * 15}});
   
     if (!res.ok) {
       throw new Error(res.statusText)
