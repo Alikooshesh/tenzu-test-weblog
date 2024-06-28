@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./styles/index.scss";
+
+*{
+    transition: all;
+    scroll-behavior: smooth;
+}
