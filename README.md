@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Simple Blog with Next.js
 
-## Getting Started
+A simple blog web application built using Next.js, featuring a home page listing blog posts and individual post pages.
 
-First, run the development server:
+## Table of Contents
 
-```bash
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Environment Variables](#environment-variables)
+- [Scripts](#scripts)
+- [Testing](#testing)
+- [Linting](#linting)
+- [Folder Structure](#folder-structure)
+
+## Introduction
+
+This project is a basic blog application developed with Next.js. It includes a home page that displays a list of blog posts fetched from a mock API, and individual pages for each blog post.
+
+## Installation
+
+To get started, clone the repository and install the dependencies:
+
+1. Clone the repository:
+   ```
+   git clone <repository-url>
+   cd <repository-name>
+   ```
+
+2. Install dependencies:
+   ```
+   yarn
+   ```
+
+## Usage
+
+To run the development server:
+
+```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project uses environment variables to configure the base API URL. Make sure to create a `.env` file in the root of your project based on the provided `.env.example`:
 
-## Learn More
+```
+NEXT_PUBLIC_BASE_API_URL = "https://jsonplaceholder.typicode.com"
+```
 
-To learn more about Next.js, take a look at the following resources:
+Ensure you replace `"https://jsonplaceholder.typicode.com"` with your actual API base URL.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- `npm run dev`: Runs the Next.js development server.
+- `npm run build`: Builds the production-ready application.
+- `npm run build:test`: Runs tests and then builds the application.
+- `npm start`: Starts the Next.js production server.
+- `npm run lint`: Runs ESLint for code linting.
+- `npm test`: Runs Jest for testing.
+- `npm run cypress:open`: Opens Cypress for end-to-end testing.
 
-## Deploy on Vercel
+## Testing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project uses Jest for unit testing. You can run the tests using:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+npm test
+```
+
+This project uses Cypress for e2e testing. You can run the tests using:
+
+```
+npm run cypress:open 
+```
+
+## Linting
+
+ESLint is used for linting. You can run linting using:
+
+```
+npm run lint
+```
+
+## Folder Structure
+
+The project structure is organized as follows:
+
+- `___tests___/`: Jest unit tests
+- `cypress/`: Cypress e2e tests
+- `public/`: Static assets
+- `components/`: React components
+- `src/`: Next.js application source
+  - `app/`: Routing and pages
+    - `[post]/`: Blog post page
+    - `styles/`: Styles and sass files
+    - `facicon.ico/`: Project fav icon
+    - `global.scss/`: Global styles
+    - `layout.tsx/`: Main project layout
+    - `page.tsx/`: Blog home page
+  - `components/`: React components
+    - `homePage/`: Components of home page
+    - `layoutController/`: Layout creator and theme controller
+    - `reduxWrapper/`: Redux and redux-persist provider
+  - `interface/`: Data interfaces
+  - `redux/`: Redux main folder
+  - `services/`: Includes services and fetches for each page
+  - `utils/`: Global functions and utils
+- `.env`: Environment variables
+- `.env.example`: Example environment variables
+- `jest.config.ts`: Jest configuration
+- `next.config.mjs`: Next.js configuration
+- `package.json`: NPM package configuration
+- `postcss.config.mjs`: Postcss configuration (needed for tailwind)
+- `tailwind.config.ts`: Tailwind configuration
+- `tsconfig.json`: Typescript configuration
