@@ -12,7 +12,7 @@ interface Iprops {
 const PostBoxHomePage = ({ id,title, publishDate, body, index }: Iprops) => {
     return (
         <>
-            <Link href={`/${[...title.split(" "),id].join("-")}`}>
+            <Link href={`/${[...title.split(" "),id].join("-")}`} className="post-box">
                 <div className="flex flex-col gap-[4px]">
                     <h1 className="inline-block text-transparent bg-clip-text font-black text-[1.75rem]" style={{ backgroundColor: hslColorGen(331,40,64,index) }}>
                         {title}

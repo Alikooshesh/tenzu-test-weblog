@@ -11,7 +11,7 @@ export default async function HomePage() {
   } catch (err) {
     return (
       <div className="w-full mt-20 justify-center">
-        <p className="text-[3rem] font-black text-red-600 text-center">
+        <p className="error-message text-[3rem] font-black text-red-600 text-center">
           there is a problem
         </p>
         <p>

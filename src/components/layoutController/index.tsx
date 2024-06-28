@@ -19,7 +19,7 @@ const LayoutController = ({ children }: Iprops) => {
     const darkMode = useSelector((state:IRootState) => state.siteSettings.darkMode)
 
     return (
-        <div className={`${darkMode ? 'dark' : ''}`}>
+        <div className={`${darkMode ? 'dark' : 'light'}`}>
             <div className="root">
                 <div className="container">
                 <header className="w-full mb-14 flex flex-wrap items-center justify-between gap-[32px]">
@@ -46,7 +46,7 @@ const LayoutController = ({ children }: Iprops) => {
 
                         <div 
                             onClick={()=>dispatch(changeTheme({}))} 
-                            className="w-[32px] h-[32px] rounded-full border border-black dark:border-white flex items-center justify-center cursor-pointer"
+                            className="theme-switch-btn w-[32px] h-[32px] rounded-full border border-black dark:border-white flex items-center justify-center cursor-pointer"
                         >
                             {!darkMode ?
                                 <svg xmlns="http://www.w3.org/2000/svg" className="fill-black dark:fill-white" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
