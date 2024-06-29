@@ -91,7 +91,6 @@ The project structure is organized as follows:
 - `___tests___/`: Jest unit tests
 - `cypress/`: Cypress e2e tests
 - `public/`: Static assets
-- `components/`: React components
 - `src/`: Next.js application source
   - `app/`: Routing and pages
     - `[post]/`: Blog post page
